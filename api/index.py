@@ -31,6 +31,7 @@ def send_text_message(to: str, body: str) -> dict:
     return response.json()
 
 
+@app.route("/", methods=["GET"])
 @app.route("/api/webhook", methods=["GET"])
 def verify_webhook():
     """Endpoint de verificação exigido pela Meta ao configurar o webhook."""
@@ -43,6 +44,7 @@ def verify_webhook():
     return "Forbidden", 403
 
 
+@app.route("/", methods=["POST"])
 @app.route("/api/webhook", methods=["POST"])
 def receive_message():
     """Recebe eventos de mensagens enviadas pelo cliente e responde."""
